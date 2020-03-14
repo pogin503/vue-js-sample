@@ -2,10 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Vue</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>Hello Vue Router</title>
 </head>
 <body>
-    
+    <div id="app">
+        <router-link to="/top">Go to Top</router-link>
+        <router-link to="/users">Go to User</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="https://unpkg.com/vue@2.6.10"></script>
+    <script src="https://unpkg.com/vue-router@3.0.6"></script>
+    <script>
+        const Top = { template: "<div>Top</div>" }
+        const User = { template: "<div>User</div>" }
+
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/top',
+                    component: Top
+                },
+                {
+                    path: '/users',
+                    component: User
+                }
+            ]
+        })
+
+        const app = new Vue({
+            router: router
+        }).$mount('#app')
+    </script>
 </body>
 </html>
